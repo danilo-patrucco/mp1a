@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="53314faf-efbe-4284-9b1d-4d4bd227ba33" name="local run" url="http://localhost/CSV_2_TABLE">
+        <fileTransfer port="0" mountedRoot="D:\xampp\htdocs\CSV_2_TABLE\Public" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
