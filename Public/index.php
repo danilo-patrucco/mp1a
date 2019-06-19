@@ -6,13 +6,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <title>CSV file to HTML table</title>
+    <title>1</title>
     <!-- Bootstrap CSS and other repositories -->
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.csheros" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- https://www.phpclasses.org/browse/file/116204.html used this website for the jumbotron code underneath -->
     <style>
-        .jumbotron{margin:30px auto;padding:30px 40px; width:1025px;
+        .jumbotron{margin:5px auto;padding:5px 5px; width:1500px;
     </style>
 
 </head>
@@ -73,14 +73,25 @@ class csv {
 class html {
 
     static public function generateTable($records) {
-
+        $count = 0;
         echo "<table class='table table-striped'>";
         foreach ($records as $record) {
-            echo "<tr>";
-            foreach ($record as $column) {
-                echo "<td>$column</td>";
+        if ($count == 0) {
+
+                echo "<thead><tr>";
+                foreach ($record as $column) {
+                    echo "<th scope='col'>$column</th>";
+                }
+                echo "</tr></thead>";
             }
-            echo "</tr>";
+        else {
+                echo "<tr>";
+                foreach ($record as $column) {
+                    echo "<td scope='row'>$column</td>";
+                }
+                echo "</tr>";
+        }
+        $count ++;
         }
         echo "</table>";
     }
