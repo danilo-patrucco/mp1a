@@ -1,3 +1,27 @@
+<!-- call for HTML bootstrap style -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSV file to HTML table</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>CSV file to HTML table</title>
+    <!-- Bootstrap CSS and other repositories -->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.csheros" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- https://www.phpclasses.org/browse/file/116204.html used this website for the jumbotron code underneath -->
+    <style>
+        .jumbotron{margin:30px auto;padding:30px 40px; width:1025px;
+    </style>
+
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <h3>CSV file to HTML table</h3>
+    <br/>
+
+
 <?php
 /** program to output html table from a csv file */
 
@@ -11,13 +35,9 @@ class main {
 
             $records = csv::getRecords($filename);
             html ::generateTable($records);
-            //system::printPage($table);
-            //print_r($records);
+            /**system::printPage($table);
+            print_r($records);*/
         }
-/**     $records = csv::getRecords();
-        $table = html::generateTable($records);
-
-*/
 }
 
 /** remember to refactor!!!!!!! */
@@ -45,7 +65,7 @@ class csv {
         }
         /** return the array to the main for processing in the html class */
         /** @var array $records */
-        //return $records;
+        return $records;
     }
 
 }
@@ -54,15 +74,7 @@ class html {
 
     static public function generateTable($records) {
 
-        echo $twig->render('index.twig', array(
-            'pageTitle' => 'Welcome to Penguins R Us!',
-            'products' => array(
-                'Tuxedo',
-                'Bow tie',
-                'Black Boxers',
-            ),
-        ));
-     /**   echo "<table>";
+        echo "<table class='table table-striped'>";
         foreach ($records as $record) {
             echo "<tr>";
             foreach ($record as $column) {
@@ -71,16 +83,17 @@ class html {
             echo "</tr>";
         }
         echo "</table>";
-    }*/
+    }
 }
 
-final class system {
+
+/**class system {
 
     static public function printPage($page) {
 
         echo $page;
     }
 }
-
+*/
 
 
