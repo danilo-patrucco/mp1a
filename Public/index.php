@@ -45,7 +45,7 @@ class csv {
         }
         /** return the array to the main for processing in the html class */
         /** @var array $records */
-        return $records;
+        //return $records;
     }
 
 }
@@ -54,7 +54,15 @@ class html {
 
     static public function generateTable($records) {
 
-        echo "<table>";
+        echo $twig->render('index.twig', array(
+            'pageTitle' => 'Welcome to Penguins R Us!',
+            'products' => array(
+                'Tuxedo',
+                'Bow tie',
+                'Black Boxers',
+            ),
+        ));
+     /**   echo "<table>";
         foreach ($records as $record) {
             echo "<tr>";
             foreach ($record as $column) {
@@ -63,7 +71,7 @@ class html {
             echo "</tr>";
         }
         echo "</table>";
-    }
+    }*/
 }
 
 final class system {
