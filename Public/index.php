@@ -73,54 +73,92 @@ class html {
 
     static public function generateTable($records) {
 
-        /** var  $count initialization for table creation loop */
-
-        $count = 0;
 
         /** call the table style striped */
 
         echo "<table class='table table-striped'>";
 
+        /** var  $count initialization for table creation loop */
+
+        $count = 0;
+
         /** start the loop to produce the table */
+
+        table::create_table_body($records,$count);
+
+
+        echo "</table>";
+
+    }
+}
+
+class theader {
+
+    static public function create_header($record) {
+
+        echo "<thead><tr>";
+
+            foreach ($record as $column) {
+
+                echo "<th scope='col'>$column</th>";
+
+            }
+            echo "</tr></thead>";
+
+    }
+
+}
+
+
+class tbody {
+
+    static public function create_table_body($record) {
+
+
+        echo "<tr>";
+
+        foreach ($record as $column) {
+
+            echo "<td>$column</td>";
+
+        }
+
+        echo "</tr>";
+
+    }
+
+}
+
+class table {
+
+    static public function create_table_body($records,$count)
+
+    {
 
         foreach ($records as $record) {
 
             /** use an if statement to identify the header vs. the body of the table */
+
             if ($count == 0) {
 
                 /** define the style of row, in this case header */
 
-                echo "<thead><tr>";
 
-                foreach ($record as $column) {
-
-                    echo "<th scope='col'>$column</th>";
-
-                }
-
-                echo "</tr></thead>";
+                theader::create_header($record);
 
             }
-/** create the body of the table */
+
+            /** create the body of the table */
+
             else {
 
-                echo "<tr>";
-
-                foreach ($record as $column) {
-
-                    echo "<td>$column</td>";
-
-                }
-
-                echo "</tr>";
+                tbody::create_table_body($record);
 
             }
-/** increment  var $count to support the row creation loop */
-        $count ++;
+            /** increment  var $count to support the row creation loop */
+
+            $count++;
 
         }
-
-        echo "</table>";
-
     }
 }
