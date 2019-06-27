@@ -76,7 +76,7 @@ class html {
 
         /** call the table style striped */
 
-        echo "<table class='table table-striped'>";
+        $table = "<table class='table table-striped'>";
 
         /** var  $count initialization for table creation loop */
 
@@ -84,27 +84,26 @@ class html {
 
         /** start the loop to produce the table */
 
-        table::create_table_body($records,$count);
+        print (table::create_table_body($records,$count,$table));
 
-
-        echo "</table>";
 
     }
 }
 
 class theader {
 
-    static public function create_header($record) {
+    static public function create_header($record,$table) {
 
-        echo "<thead><tr>";
+        $table .= "<thead><tr>";
 
-            foreach ($record as $column) {
+        foreach ($record as $column) {
 
-                echo "<th scope='col'>$column</th>";
-
+                $table .= "<th scope='col'>$column</th>";
             }
-            echo "</tr></thead>";
 
+        $table .= "</tr></thead>";
+
+        return $table;
     }
 
 }
@@ -112,26 +111,26 @@ class theader {
 
 class tbody {
 
-    static public function create_table_body($record) {
+    static public function create_table_body($record,$table) {
 
-
-        echo "<tr>";
+        $table .= "<tr>";
 
         foreach ($record as $column) {
 
-            echo "<td>$column</td>";
+            $table .= "<td>$column</td>";
 
         }
 
-        echo "</tr>";
+        $table .= "</tr>";
 
+        return $table;
     }
 
 }
 
 class table {
 
-    static public function create_table_body($records,$count)
+    static public function create_table_body($records,$count,$table)
 
     {
 
@@ -144,7 +143,7 @@ class table {
                 /** define the style of row, in this case header */
 
 
-                theader::create_header($record);
+                $table = theader::create_header($record,$table);
 
             }
 
@@ -152,13 +151,16 @@ class table {
 
             else {
 
-                tbody::create_table_body($record);
+                $table = tbody::create_table_body($record,$table);
 
             }
             /** increment  var $count to support the row creation loop */
 
             $count++;
-
         }
+
+        $table .= "</table>";
+
+        return $table;
     }
 }
