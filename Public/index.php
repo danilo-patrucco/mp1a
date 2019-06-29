@@ -82,9 +82,9 @@ class html {
 
         $count = 0;
 
-        /** start the loop to produce the table */
+        /** start the loop to produce the table and print it out  */
 
-        print (table::create_table_body($records,$count,$table));
+        echo (table::create_table_body($records,$count,$table));
 
 
     }
@@ -92,9 +92,15 @@ class html {
 
 class theader {
 
+    /** class to create the header for the table */
+
     static public function create_header($record,$table) {
 
+        /** add to the variable table the opener for the table header */
+
         $table .= "<thead><tr>";
+
+        /** loop to create columns in the header */
 
         foreach ($record as $column) {
 
@@ -102,6 +108,8 @@ class theader {
             }
 
         $table .= "</tr></thead>";
+
+        /** returning the variable table back to the html class */
 
         return $table;
     }
@@ -111,9 +119,15 @@ class theader {
 
 class tbody {
 
+    /** class to create the body for the table */
+
     static public function create_table_body($record,$table) {
 
+        /** add to the variable table the opener for the table body (also used to CR LF the records) */
+
         $table .= "<tr>";
+
+        /** loop to create columns in the body of the table */
 
         foreach ($record as $column) {
 
@@ -122,6 +136,8 @@ class tbody {
         }
 
         $table .= "</tr>";
+
+        /** returning the variable table back to the html class */
 
         return $table;
     }
@@ -159,7 +175,11 @@ class table {
             $count++;
         }
 
+        /** close the table */
+
         $table .= "</table>";
+
+        /** return the table variable back to the main class */
 
         return $table;
     }
